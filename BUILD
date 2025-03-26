@@ -1,4 +1,3 @@
-load("@com_github_bazelbuild_buildtools//buildifier:def.bzl", "buildifier")
 
 # --- Safety warnings ---
 safety_warnings = [
@@ -7,24 +6,25 @@ safety_warnings = [
     "-Wextra",  # Enable extra warnings
     "-Wpedantic",  # Enforce strict C++ standard compliance
     "-Werror",  # Treat warnings as errors
-    "-O2",  # Optimization level 2
-    "-g",  # Include debug symbols
+     "-O2",  # Optimization level 2
+     "-g",  # Include debug symbols
 ]
 
 # --- Libraries ---
 cc_library(
-    name = "result",
+    name = "result_lib",
+    srcs = ["lib/result.hpp"],
     hdrs = ["lib/result.hpp"],
     copts = safety_warnings,
 )
 
 # --- Executables: ---
 cc_binary(
-    name = "interview_app",
+    name = "example_result",
     srcs = ["examples/result/example.cpp"],
     copts = safety_warnings,
     deps = [
-        ":result",
+        ":result_lib",
     ],
 )
 
@@ -34,12 +34,8 @@ cc_test(
     srcs = ["test/test_result.cpp"],
     copts = safety_warnings,
     deps = [
-        ":result",
-        "@com_google_googletest//:gtest_main",
+        ":result_lib",
+        "@googletest//:gtest",
+        "@googletest//:gtest_main",
     ],
-)
-
-# --- Other: ---
-buildifier(
-    name = "buildifier",
 )

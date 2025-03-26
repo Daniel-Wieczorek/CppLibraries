@@ -4,7 +4,11 @@
 
 `Result` class is generic class template that represents the result of an
 operation. It can hold either a value of type `T` or an error of type `E`. This
-class is part of the `interview::library` namespace.
+class is part of the `custom::library` namespace.
+
+ToDo: Plan for future impl:
+`Result` supports `std::variant` introduced in Cpp starting from version 17 and
+can be used instead of raw union type.
 
 ## Template Parameters
 
@@ -46,7 +50,7 @@ To run and test created library you can use `Bazel`
 ### Run example
 To run the the example library usage execute following command:
 ```Bazel
-bazel run //:interview_app
+bazel run //:example_result
 ```
 
 Example output:

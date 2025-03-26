@@ -1,30 +1,25 @@
-#include "lib/result.hpp"
-
 #include <gtest/gtest.h>
 
-namespace interview
-{
-namespace library
-{
-namespace test
-{
+#include <cstdint>
 
-using namespace interview::library;
+#include "lib/result.hpp"
 
-class ResultTest : public ::testing::Test
-{
-  protected:
+namespace custom {
+namespace library {
+namespace test {
+
+class ResultTest : public ::testing::Test {
+   protected:
     void SetUp() override {}
     void TearDown() override {}
 };
 
 TEST_F(ResultTest, DefaultConstructor)
 {
-    const Result<std::uint32_t> result;
+    const custom::library::Result<std::uint32_t> result;
     EXPECT_TRUE(result.hasValue());
     EXPECT_EQ(result.getValue(), 0U);
 }
-
 TEST_F(ResultTest, ConstructorWithRValue)
 {
     const Result<std::uint32_t> result(42U);
@@ -134,13 +129,12 @@ TEST_F(ResultTest, HasValue)
 }
 
 // Test with a custom type
-class CustomType
-{
-  public:
+class CustomType {
+   public:
     CustomType(std::uint32_t data) : data_(data) {}
     const std::uint32_t& getData() const { return data_; }
 
-  private:
+   private:
     std::uint32_t data_;
 };
 
@@ -152,14 +146,13 @@ TEST_F(ResultTest, CustomType)  // Default constructible shall not be call here
 }
 
 // Test with a deleted constructor
-class NonDefaultConstructible
-{
-  public:
+class NonDefaultConstructible {
+   public:
     NonDefaultConstructible(std::uint32_t data) : data_(data) {}
     NonDefaultConstructible() = delete;
     const std::uint32_t& getData() const { return data_; }
 
-  private:
+   private:
     std::uint32_t data_;
 };
 
@@ -179,4 +172,4 @@ int main(int argc, char** argv)
 
 }  // namespace test
 }  // namespace library
-}  // namespace interview
+}  // namespace custom

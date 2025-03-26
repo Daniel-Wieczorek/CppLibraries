@@ -12,7 +12,7 @@ machine. You can get it from: https://bazel.build/
 ### Run `result` example of usage
 To run the `result` library example usage execute following command:
 ```Bazel
-bazel run //:interview_app
+bazel run //:example_result
 ```
 
 ### Run the tests:

@@ -12,7 +12,7 @@
  * error type). The error type is optional and defaults to the enum class
  * Status, which represents different status codes.
  *
- * @note This class is part of the interview::library namespace.
+ * @note This class is part of the custom::library namespace.
  * @author Daniel Wieczorek
  *
  */
@@ -22,14 +22,15 @@
 #include <functional>
 #include <iostream>
 #include <type_traits>
+#include <cstdint>
 
-namespace interview
+namespace custom
 {
 namespace library
 {
 
 /// @brief Default class as an error type:
-enum class Status : uint32_t
+enum class Status : std::uint32_t
 {
     OK = 0,
     INVALID_ARG,
@@ -386,6 +387,6 @@ class Result
 };
 
 }  // namespace library
-}  // namespace interview
+}  // namespace custom
 
 #endif  // INTERVIEW_LIBRARY_RESULT_HPP

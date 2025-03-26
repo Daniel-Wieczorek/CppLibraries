@@ -1,7 +1,9 @@
-###############################################################################
-# Bazel now uses Bzlmod by default to manage external dependencies.
-# Please consider migrating your external dependencies from WORKSPACE to MODULE.bazel.
-#
-# For more details, please check https://github.com/bazelbuild/bazel/issues/18958
-# TODO: Migrate changes
-###############################################################################
+# External dependencies are migrated from WORKSPACE to MODULE.bazel.
+# Please use bazel version >= 8.0.0
+
+bazel_dep(name = "bazel_skylib", version = "1.4.2")
+bazel_dep(name = "rules_java", version = "6.1.1")
+
+# Choose the most recent version available at
+# https://registry.bazel.build/modules/googletest
+bazel_dep(name = "googletest", version = "1.16.0")
