@@ -6,9 +6,9 @@
 operation. It can hold either a value of type `T` or an error of type `E`. This
 class is part of the `custom::library` namespace.
 
-ToDo: Plan for future impl:
 `Result` supports `std::variant` introduced in Cpp starting from version 17 and
-can be used instead of raw union type.
+can be used instead of raw union type. Library can be compiled for C++ version
+14 and 17.
 
 ## Template Parameters
 
@@ -42,25 +42,39 @@ if (result) {
 ```
 
 ## Limitations:
-1. Error type should be left for now as default one what is `Status`
+- Error type should be left for now as default one what is `Status`
 
 ## Run targets
 To run and test created library you can use `Bazel`
 
-### Run example
-To run the the example library usage execute following command:
-```Bazel
-bazel run //:example_result
+##### Run example
+To run the `result` library example usage execute following command:
+
+```
+bazel run --cxxopt=-std=c++17 //:example_result
+```
+
+Or for Cpp14:
+
+```
+bazel run --cxxopt=-std=c++14 //:example_result
 ```
 
 Example output:
 
 ![Image NOT loaded!](img/result_example_output.png)
 
-### Run the tests:
-To run the the unit tests execute following command:
-```Bazel
-bazel run //:test_result
+##### Run the tests
+To run the `result` library unit tests execute following command:
+
+```
+bazel run --cxxopt=-std=c++17 //:test_result
+```
+
+Or for Cpp14:
+
+```
+bazel run --cxxopt=-std=c++14 //:test_result
 ```
 
 Example output:

@@ -1,3 +1,3 @@
-Documentation for created library functions:
+### Documentation for created library functions:
 
 - [Result](result/Readme.md)

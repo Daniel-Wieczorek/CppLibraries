@@ -1,7 +1,6 @@
 
 # --- Safety warnings ---
 safety_warnings = [
-    "-std=c++14",  # Use C++14
     "-Wall",  # Enable all warnings
     "-Wextra",  # Enable extra warnings
     "-Wpedantic",  # Enforce strict C++ standard compliance
